@@ -71,3 +71,4 @@ See [SETUP.md](docs/SETUP.md) for detailed configuration steps.
 ## License
 
 MIT
+# ai-coding-agent
