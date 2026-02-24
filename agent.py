@@ -23,10 +23,10 @@ class AICodeAgent:
     
     def __init__(self, api_key=None):
         """Initialize the agent with GitHub Models API key"""
-        self.api_key = api_key or os.getenv("GITHUB_MODEL_API_KEY")
+        self.api_key = api_key or os.getenv("AI_AGENT_MODEL_API_KEY")
         if not self.api_key:
             raise ValueError(
-                "GITHUB_MODEL_API_KEY environment variable not set. "
+                "AI_AGENT_MODEL_API_KEY environment variable not set. "
                 "Set it to your GitHub Models API key."
             )
         
@@ -214,7 +214,7 @@ def main():
     """CLI entry point"""
     parser = argparse.ArgumentParser(description="AI Coding Agent - Generate code from topics")
     parser.add_argument("topic", help="Topic for code generation (e.g., 'Build a weather app')")
-    parser.add_argument("--api-key", help="GitHub Models API key (or set GITHUB_MODEL_API_KEY env var)")
+    parser.add_argument("--api-key", help="GitHub Models API key (or set AI_AGENT_MODEL_API_KEY env var)")
     parser.add_argument("--output", default="generated-code", help="Output directory")
     
     args = parser.parse_args()

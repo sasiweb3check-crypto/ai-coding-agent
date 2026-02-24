@@ -69,14 +69,14 @@ jobs:
         id: generate
         if: steps.extract_topic.outputs.processing == 'true' || steps.extract_dispatch.outputs.processing == 'true'
         env:
-          GITHUB_MODEL_API_KEY: ${{ secrets.GITHUB_MODEL_API_KEY }}
+          AI_AGENT_MODEL_API_KEY: ${{ secrets.AI_AGENT_MODEL_API_KEY }}
         run: |
           TOPIC="${{ steps.extract_topic.outputs.title || steps.extract_dispatch.outputs.title }}"
           echo "Processing topic: $TOPIC"
           
-          if [ -z "$GITHUB_MODEL_API_KEY" ]; then
-            echo "ERROR: GITHUB_MODEL_API_KEY secret is not set"
-            echo "Please add GITHUB_MODEL_API_KEY to repository secrets"
+          if [ -z "$AI_AGENT_MODEL_API_KEY" ]; then
+            echo "ERROR: AI_AGENT_MODEL_API_KEY secret is not set"
+            echo "Please add AI_AGENT_MODEL_API_KEY to repository secrets"
             exit 1
           fi
           

@@ -154,7 +154,7 @@ import os
 import json
 from datetime import datetime
 
-client = OpenAI(api_key=os.getenv("GITHUB_MODEL_API_KEY"))
+client = OpenAI(api_key=os.getenv("AI_AGENT_MODEL_API_KEY"))
 
 def generate_code(topic, language_hint=None):
     """Generate code for given topic."""

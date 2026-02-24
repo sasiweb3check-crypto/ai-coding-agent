@@ -92,8 +92,8 @@ The agent needs API keys to call GitHub Models. Store them securely as GitHub Se
 
 ### Add These Secrets:
 
-#### Secret 1: GITHUB_MODEL_API_KEY
-- **Name**: `GITHUB_MODEL_API_KEY`
+#### Secret 1: AI_AGENT_MODEL_API_KEY
+- **Name**: `AI_AGENT_MODEL_API_KEY`
 - **Value**: Your GitHub Models API key (from Prerequisites)
   - From [github.com/marketplace/models](https://github.com/marketplace/models), click your profile → copy API key
 - Click **Add secret**
@@ -175,7 +175,7 @@ jobs:
       - name: Generate Code with AI Agent
         if: steps.extract_topic.outputs.processing == 'true'
         env:
-          GITHUB_MODEL_API_KEY: ${{ secrets.GITHUB_MODEL_API_KEY }}
+          AI_AGENT_MODEL_API_KEY: ${{ secrets.AI_AGENT_MODEL_API_KEY }}
         run: |
           python agent.py "${{ steps.extract_topic.outputs.title }}" --output generated-code
       
@@ -263,7 +263,7 @@ git push origin main
 
 ```bash
 # Set API key locally
-export GITHUB_MODEL_API_KEY="your-key-from-step-1"
+export AI_AGENT_MODEL_API_KEY="your-key-from-step-1"
 
 # Test code generation
 python agent.py "Build a simple calculator in Python"
@@ -330,11 +330,11 @@ Each creates a new PR with unique, optimized code.
 2. Re-create issue with proper title: `Topic: Your topic here`
 3. Verify permissions: **Settings** → **Actions** → **General** → ensure "Read and write permissions" enabled
 
-### Issue: "GITHUB_MODEL_API_KEY not set" error
+### Issue: "AI_AGENT_MODEL_API_KEY not set" error
 
 **Solution**:
 1. Go to **Settings** → **Secrets and variables** → **Actions**
-2. Verify `GITHUB_MODEL_API_KEY` exists
+2. Verify `AI_AGENT_MODEL_API_KEY` exists
 3. If missing, add it (see Step 2 above)
 4. Rerun workflow: Go to **Actions** → Select workflow → **Re-run all jobs**
 
